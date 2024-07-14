@@ -8,4 +8,4 @@ A Project to demonstrate <b>useEffect Hook<b/> and Handling <b>side effects<b/>.
 
 ## What side effects is React:
 
-## When a
+## When
