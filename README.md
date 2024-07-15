@@ -6,6 +6,6 @@ A Project to demonstrate <b>useEffect Hook<b/> and Handling <b>side effects<b/>.
 
 ## When and why do we use useEffect Hook:
 
-## What side effects is React:
+## What side effects is React
 
 ## How do we handle side effects in React:
