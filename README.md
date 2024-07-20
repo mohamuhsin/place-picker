@@ -9,3 +9,5 @@ A Project to demonstrate <b>useEffect Hook<b/> and Handling <b>side effects<b/>.
 ## What side effects is React:
 
 ## How do we handle side effects in React:
+
+## How do we handle side effects in React:
