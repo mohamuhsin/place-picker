@@ -10,4 +10,4 @@ A Project to demonstrate <b>useEffect Hook<b/> and Handling <b>side effects<b/>.
 
 ## How do we handle side effects in React:
 
-## How do we handle side effects i
+## How do we handle side effect
