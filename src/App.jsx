@@ -13,7 +13,7 @@ const storedPlaces = storedIds.map((id) =>
 );
 
 function App() {
-  const [ModalISsOpen, setModalIsOpen] = useState(false);
+  const [modalISsOpen, setModalIsOpen] = useState(false);
   const selectedPlace = useRef();
   const [availablePlaces, setAvailablePlaces] = useState([]);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
@@ -73,7 +73,7 @@ function App() {
 
   return (
     <>
-      <Modal open={ModalISsOpen}>
+      <Modal open={modalISsOpen}>
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
