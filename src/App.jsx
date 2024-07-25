@@ -62,9 +62,12 @@ function App() {
       );
     }
   }
-  
+
   const handleRemovePlace = useCallback(function handleRemovePlace() {
-    /* Update picked place state. This should also be in sync with local storage
+    /* The function is wrapped in useCallback() hook to preventing looping when this callback function
+    is used as a dependency by useEffect().
+
+    Update picked place state. This should also be in sync with local storage
     *  So, update both*/
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)

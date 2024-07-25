@@ -17,7 +17,7 @@ function Modal({ open, children, onClose }) {
 
   return createPortal(
     <dialog className="modal" ref={dialog} onClose={onClose}> {/*onClose enable modal to close using ecape key*/}
-      {open ? children : null}
+      {open ? children : null} {/* only show delete confirmation on the modal when open is true */}
     </dialog>,
     document.getElementById("modal")
   );
