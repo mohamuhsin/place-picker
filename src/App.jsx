@@ -7,18 +7,22 @@ import DeleteConfirmation from "./components/DeleteConfirmation.jsx";
 import logoImg from "./assets/logo.png";
 import { sortPlacesByDistance } from "./loc.js";
 
+/*
+* load stored place on loading application */
 const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
 const storedPlaces = storedIds.map((id) =>
   AVAILABLE_PLACES.find((place) => place.id === id)
 );
 
 function App() {
-  const [modalISsOpen, setModalIsOpen] = useState(false);
+  const [modalISsOpen, setModalIsOpen] = useState(false); // control opening and closing modal
   const selectedPlace = useRef();
   const [availablePlaces, setAvailablePlaces] = useState([]);
   const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
   useEffect(() => {
+    /*
+    * interact with the browser's API to fetch location using as side effect */
     navigator.geolocation.getCurrentPosition((position) => {
       const sortedPlaces = sortPlacesByDistance(
         AVAILABLE_PLACES,
@@ -48,8 +52,9 @@ function App() {
       return [place, ...prevPickedPlaces];
     });
 
+    // save selected places to local storage to repopulate after page refresh/reload
     const storedIds = JSON.parse(localStorage.getItem("selectedPlaces")) || [];
-
+    // skip already stored ids in the local storage
     if (storedIds.indexOf(id) === -1) {
       localStorage.setItem(
         "selectedPlaces",
@@ -59,6 +64,11 @@ function App() {
   }
 
   const handleRemovePlace = useCallback(function handleRemovePlace() {
+    /* The function is wrapped in useCallback() hook to preventing looping when this callback function
+    is used as a dependency by useEffect().
+
+    Update picked place state. This should also be in sync with local storage
+    *  So, update both*/
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );

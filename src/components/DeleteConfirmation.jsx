@@ -9,7 +9,9 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
     const timer = setTimeout(() => {
       onConfirm();
     }, TIMER);
-
+    // clear timeout with a cleanup function provide as a return function in useEffect
+    // without clearing the timeout, it will keep running having undesired effects.
+    // In this case it the selected place is deleted when timeout even after clicking no
     return () => {
       clearTimeout(timer);
     };
