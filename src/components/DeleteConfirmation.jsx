@@ -1,16 +1,18 @@
 import { useEffect } from "react";
+import ProgressBar from "./ProgressBar";
+
+const TIMER = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
   useEffect(() => {
     console.log("SET TIMER");
     const timer = setTimeout(() => {
       onConfirm();
-    }, 3000);
+    }, TIMER);
     // clear timeout with a cleanup function provide as a return function in useEffect
     // without clearing the timeout, it will keep running having undesired effects.
     // In this case it the selected place is deleted when timeout even after clicking no
     return () => {
-      console.log("Cleaning up timer");
       clearTimeout(timer);
     };
   }, [onConfirm]);
@@ -27,6 +29,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
+      <ProgressBar timer={TIMER} />
     </div>
   );
 }
